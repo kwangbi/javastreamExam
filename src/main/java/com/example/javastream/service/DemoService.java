@@ -4,10 +4,7 @@ import com.example.javastream.model.Sample;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
-import java.util.Comparator;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
@@ -16,7 +13,7 @@ public class DemoService {
 
     public Object getDemo(){
         // 성별이 남성인경우만 출력
-        List<Sample> sampleList = Sample.getSampleList().stream().filter(sample -> sample.getGender() == "M").collect(Collectors.toList());
+        List<Sample> sampleList = Sample.getSampleList().stream().filter(sample -> sample.getGender().equals("M")).collect(Collectors.toList());
 
         // 나이순으로 정렬
         List<Sample> sampleSortList = Sample.getSampleList().stream().sorted(Comparator.comparing(Sample::getAge)).collect(Collectors.toList());
@@ -53,6 +50,15 @@ public class DemoService {
 
 
         return sampleMaxWomanName;
+    }
+
+    public Object getDemo2(){
+        String[] array = {"Paris", "Seoul", "Tokyo", "Washington"};
+        Arrays.stream(array).forEach(
+                item -> System.out.println(item)
+        );
+
+        return "OK";
     }
 
 }

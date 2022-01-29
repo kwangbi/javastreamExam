@@ -17,4 +17,9 @@ public class DemoController {
     public Object getDemo(){
         return demoService.getDemo();
     }
+
+    @GetMapping("/get/demo2")
+    public Object getDemo2(){
+        return demoService.getDemo2();
+    }
 }
